@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Todo List</title>
+  <style>
+     body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+    }
+
+    input[type="text"] {
+      padding: 0.5rem;
+      font-size: 1rem;
+      width: 60%;
+    }
+
+    button {
+      padding: 0.55rem 1rem;
+      margin-left: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 1rem;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      background: #f4f4f4;
+      margin-bottom: 0.3rem;
+      border-radius: 4px;
+      transition: background 0.2s ease;
+    }
+
+    li:hover {
+      background: #e0e0e0;
+    }
+
+    .task-text {
+      flex: 1;
+      margin-right: 0.5rem;
+      word-break: break-word;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 0.3rem;
+    }
+
+    .icon-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .icon-btn.edit {
+      color: #ff9900;
+    }
+
+    .icon-btn.delete {
+      color: #ff3333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Todo List</h1>
+  <input id="taskInput" type="text" placeholder="Enter new task">
+  <button id="addBtn">Add Task</button>
+
+  <ul id="taskList"></ul>
+
+  <script src="./task1.js"> </script>
+</body>
+</html>
