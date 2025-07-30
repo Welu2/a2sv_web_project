@@ -1,0 +1,18 @@
+.App {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: sans-serif;
+}
+
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  padding: 16px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.error {
+  color: red;
+}
