@@ -33,6 +33,6 @@ Console logs are added to trace the render flow and data fetching process during
 
 
 
-![Screenshot](../screenshot/773.png)
+![Screenshot](../screenshot/773png.png)
 
 ![Screenshot](../screenshot/774.png)
