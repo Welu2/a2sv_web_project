@@ -1,69 +1,38 @@
-# React + TypeScript + Vite
+# Task 7: Integrating API Data into the Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+Objective:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Integrate data from a provided API endpoint into your application and populate the cards with this fetched data.
 
-## Expanding the ESLint configuration
+This component OpportunityCard takes an opportunity object as a prop and displays its details like title, description, organization, location, and formatted deadline.
+The Props type ensures the structure of the opportunity object is consistent and strongly typed.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+![Screenshot](../screenshot/71.png)
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This function asynchronously fetches a list of opportunities from an API, logs the response and data, and returns the results or an empty array if there's an error.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+![Screenshot](../screenshot/72.png)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+
+This Opportunity interface defines the structure of an opportunity object with fields like id, title, description, organization, location, and deadline.
+
+
+![Screenshot](../screenshot/771.png)
+
+this is css code
+![Screenshot](../screenshot/772.png)
+
+This App component fetches opportunity data using fetchOpportunities when it mounts via useEffect.
+It stores the results in opportunities state and handles any fetch errors by setting an error message.
+If data is loading or missing, it displays a fallback message; otherwise, it renders a list of OpportunityCard components.
+Console logs are added to trace the render flow and data fetching process during development.
+
+
+
+![Screenshot](../screenshot/773.png)
+
+![Screenshot](../screenshot/774.png)
