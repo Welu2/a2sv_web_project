@@ -1,69 +1,21 @@
-# React + TypeScript + Vite
+# Task 4: Developing a Simple Todo List app with React and Typescript
+Create a Todo List application using React and TypeScript that allows users to add, edit, and delete tasks. Use the concepts covered in the video tutorials to guide you in building the application.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+creates todofrom
+![Screenshot](../screenshot/41.png)
 
-Currently, two official plugins are available:
+TodoItem is a React component that displays a single to-do with edit and delete options.
+It conditionally shows an input field when the item is in edit mode using todo.isEditing.
+Handlers like onUpdate and onDelete are called based on user actions like edit, save, or delete.  below 2 pictures show toditem code
+![Screenshot](../screenshot/42.png)
+![Screenshot](../screenshot/42.png)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The App component manages the full to-do list using React state.
+It allows adding, deleting, and editing to-dos, passing those actions to child components.
+Each to-do is rendered using TodoItem, and new items are added via TodoForm.below 2 pic show app.tsx
 
-## Expanding the ESLint configuration
+![Screenshot](../screenshot/441.png)
+![Screenshot](../screenshot/442.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+This TypeScript interface defines the shape of a to-do item.
+![Screenshot](../screenshot/443.png)
