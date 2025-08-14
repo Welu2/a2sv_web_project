@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Task 8: User Authentication
 
-## Getting Started
+Objective:
 
-First, run the development server:
+Implement authentication functionality using NextAuth in your application, including signup and signin pages, and integrate with provided API endpoints for user registration and authentication.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+authOptions code enables email/password login using NextAuth's CredentialsProvider, calling your backend's /login endpoint.It stores the returned accessToken, role, and other custom fields in the JWT and session.It also redirects users to a custom sign-in page at /signin and uses JWT-based sessions.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![Screenshot](../screenshot/80.png)
+![Screenshot](../screenshot/81.png)
+![Screenshot](../screenshot/82.png)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This sets up NextAuth with your custom authOptions, enabling authentication handling for both GET and POST requests at /api/auth/[...nextauth].
+![Screenshot](../screenshot/811.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+This code extends NextAuth’s default types to include custom fields like accessToken, role, profileComplete, and profileStatus on the user session and JWT.
+![Screenshot](../screenshot/83.png)
 
-## Learn More
+This component renders a reusable styled input field with a label, accepting props for id, label, type, value, change handler, and optional required flag.
+![Screenshot](../screenshot/84.png)
+![Screenshot](../screenshot/85.png)
 
-To learn more about Next.js, take a look at the following resources:
+This component wraps your app with SessionProvider to enable NextAuth session access (useSession) throughout the client-side React tree.
+![Screenshot](../screenshot/86.png)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This SigninForm component renders a styled login form that collects email and password, calls signIn via NextAuth’s credentials provider, handles errors, and redirects to the homepage on success.It uses local state to track form inputs and shows validation errors if login fails.
+![Screenshot](../screenshot/87.png)
+![Screenshot](../screenshot/88.png)
+![Screenshot](../screenshot/89.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This Signup component renders a styled registration form that collects user details, validates inputs, and sends a POST request to the backend /signup API.
+If successful, it redirects to the /verify page for OTP email verification
 
-## Deploy on Vercel
+![Screenshot](../screenshot/880.png)
+![Screenshot](../screenshot/881.png)
+![Screenshot](../screenshot/882.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This VerifyEmail component lets users enter a 4-digit OTP sent to their email, validates it, and sends it to the backend for verification.It manages input focus, restricts non-numeric values, shows errors, and redirects to /signin on success.A countdown timer prevents resending immediately and enhances UX by showing a delay before retrying.
+
+![Screenshot](../screenshot/883.png)
+![Screenshot](../screenshot/884.png)
+![Screenshot](../screenshot/885.png)
+![Screenshot](../screenshot/886.png)
