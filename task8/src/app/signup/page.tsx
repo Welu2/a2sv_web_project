@@ -26,9 +26,34 @@ const Signup = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Clear old error
+    setError("");
+
+    // Simple client-side checks
+    if (!form.name.trim()) {
+      setError("Full name is required.");
+      return;
+    }
+
+    if (!/\S+@\S+\.\S+/.test(form.email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    if (form.password.length < 6) {
+      setError("Password must be at least 6 characters.");
+      return;
+    }
+
+    if (form.password !== form.confirmPassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
     try {
       await axios.post("https://akil-backend.onrender.com/signup", form);
-       router.push(`/verify?email=${encodeURIComponent(form.email)}`);
+      router.push(`/verify?email=${encodeURIComponent(form.email)}`);
     } catch (err: any) {
       setError(err.response?.data?.message || "Signup failed");
     }

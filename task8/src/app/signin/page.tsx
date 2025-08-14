@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import InputForm from "../components/InputForm"; // Make sure path is correct
+import InputForm from "../components/InputForm"; 
 
 const SigninForm = () => {
   const [form, setForm] = useState({ email: "", password: "" });
